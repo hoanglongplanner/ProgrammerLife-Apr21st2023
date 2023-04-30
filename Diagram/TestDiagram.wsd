@@ -1,0 +1,28 @@
+@startuml TestDiagram
+
+actor "Web User" as actor_WebUser
+participant "Front End" as part_Portal
+participant "Gateway" as part_Gateway
+participant "Identity\nServer" as part_IdentityServer
+
+actor_WebUser -> part_Portal ++: Orders Request
+
+group Step: Authentication
+    part_Portal -> part_Gateway ++: GET /api/v1/orders \nBearer Token
+    part_Gateway -> part_IdentityServer ++: Authenticate Token
+    part_IdentityServer --> part_IdentityServer : Validate\nToken
+    part_IdentityServer -> part_Gateway : Success: Token Validated
+else Authentication Failed
+    part_IdentityServer -> part_Gateway --: Fail: Request Failed
+    part_Gateway -> part_Portal : Authentication Failure
+    part_Portal -> actor_WebUser : Logic Again
+    note right: Authentication has failed
+else Authentication Failed 02
+    part_IdentityServer -> part_Gateway --: Fail: Request Failed
+    part_Gateway -> part_Portal : Authentication Failure
+    part_Portal -> actor_WebUser : Logic Again
+end
+
+part_Portal -> actor_WebUser --: Respond
+
+@enduml
