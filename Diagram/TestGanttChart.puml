@@ -1,0 +1,14 @@
+@startgantt TestGanttChart
+
+project starts 1 of August 2023
+
+saturday are closed
+sunday are closed
+
+[task1] on {Alice} lasts 5 days
+then [task2] on {bob} lasts 5 days
+then [task3] on {trent} lasts 5 days
+
+hide ressources footbox
+
+@endgantt

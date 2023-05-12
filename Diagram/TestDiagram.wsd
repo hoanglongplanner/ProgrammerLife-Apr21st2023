@@ -21,6 +21,10 @@ else Authentication Failed 02
     part_IdentityServer -> part_Gateway --: Fail: Request Failed
     part_Gateway -> part_Portal : Authentication Failure
     part_Portal -> actor_WebUser : Logic Again
+else Authentication Failed 03
+    part_IdentityServer -> part_Gateway --: Fail: Request Failed
+    part_Gateway -> part_Portal : Authentication Failure
+    part_Portal -> actor_WebUser : Logic Again
 end
 
 part_Portal -> actor_WebUser --: Respond
