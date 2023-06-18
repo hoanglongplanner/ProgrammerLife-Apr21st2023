@@ -1,6 +1,6 @@
 # Notes on GTK
 
-GTK has a bad setup for Windows Enviroment.
+GTK has a bad setup for Windows Environment.
 
 This tutorial should assume you know the basics of using MSYS2 to install GCC, GDB and G++ packages.
 
